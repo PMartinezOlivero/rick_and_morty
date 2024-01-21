@@ -1,1 +1,0 @@
-Proyecto Rick And Morty
