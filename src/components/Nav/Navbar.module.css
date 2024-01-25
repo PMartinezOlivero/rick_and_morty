@@ -1,8 +1,8 @@
-.container {
+.box {
     display:flex;
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
     padding: 10px;
-    background-color: lightgoldenrodyellow;
+    background-color: rgb(99, 99, 99);
 }
