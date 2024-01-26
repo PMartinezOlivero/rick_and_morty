@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Validator from "../../utils/Validator";
+import styles from "./Form.module.css";
 
 
-export default function Form(){
+export default function Form(props){
 
     const [ userData, setUserData ] = useState({
         email:'',
@@ -24,12 +25,12 @@ export default function Form(){
     // };
 
     const handleChange = (e) => {
-        // setErrors({
-        //     Validator({
-        //         ...userData,
-        //         [e.target.name] : e.target.value
-        //     })
-        // });
+        setErrors(
+            Validator({
+                ...userData,
+                [e.target.name] : e.target.value
+            })
+        );
 
         setUserData({
             ...userData,
@@ -40,21 +41,24 @@ export default function Form(){
 
     return (
         <>
-            <div className="box">
-                <form className="" >
-                    <label htmlFor="email">email</label>
+            <div className={styles.box}>
+                <form className="" onSubmit={()=>props.login(userData)}>
+                    <label htmlFor="email">Email</label>
                     <input 
                         type="text" 
                         name="email" 
                         value={userData.email}
                         onChange={handleChange}
+                        className={errors.email && styles.errors}
                     />
+                    {errors.email && <span className={styles.errors}>{errors.email}</span>}
                     <label htmlFor="password">Password</label>
                     <input 
                         type="text" 
                         name="password" 
                         value={userData.password}
                         onChange={handleChange}
+                        className={errors.password && styles.errors}
                     />
                     <button>Submit</button>
                 </form>

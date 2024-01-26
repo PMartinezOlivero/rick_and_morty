@@ -7,13 +7,29 @@ import Login from "./views/Login.jsx";
 import Home from "./views/Home.jsx";
 import About from "./views/About.jsx";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  const [ access, setAccess ] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  //Base de datos Access:
+  const EMAIL = 'pmo.martinez@gmail.com';
+  const PASSWORD = 'admin1234';
+
+  useEffect(()=>{!access && navigate('/')}, [access]);
+
+  function login (userData) {
+    if (userData.email === EMAIL && userData.password === PASSWORD) {
+      setAccess(true);
+      navigate('./home');
+    }
+  }
 
   const onSearch = async (id) => {
     try {
@@ -49,7 +65,7 @@ function App() {
       
       <Routes>
         {/*}Landing{*/}
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login login={login} />} />
         <Route path="home" element={<Home characters={characters} onClose={onClose} onSearch={onSearch} />}/>
         <Route path="home/details/:id" element={<Details />} />
         <Route path="about" element={<About />} />
