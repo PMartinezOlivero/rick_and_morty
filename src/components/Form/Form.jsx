@@ -43,23 +43,28 @@ export default function Form(props){
         <>
             <div className={styles.box}>
                 <form className="" onSubmit={()=>props.login(userData)}>
-                    <label htmlFor="email">Email</label>
-                    <input 
-                        type="text" 
-                        name="email" 
-                        value={userData.email}
-                        onChange={handleChange}
-                        className={errors.email && styles.errors}
-                    />
-                    {errors.email && <span className={styles.errors}>{errors.email}</span>}
-                    <label htmlFor="password">Password</label>
-                    <input 
-                        type="text" 
-                        name="password" 
-                        value={userData.password}
-                        onChange={handleChange}
-                        className={errors.password && styles.errors}
-                    />
+                    <div>
+                        <label htmlFor="email">Email</label>
+                        <input 
+                            type="text" 
+                            name="email" 
+                            value={userData.email}
+                            onChange={handleChange}
+                            className={errors.email && styles.errors}
+                        />
+                        {errors.email && <span className={styles.errors}>{errors.email}</span>}
+                    </div>
+                    <div>
+                        <label htmlFor="password">Password</label>
+                        <input 
+                            type="text" 
+                            name="password" 
+                            value={userData.password}
+                            onChange={handleChange}
+                            className={errors.password && styles.errors}
+                        />
+                        {errors.password && <span className={styles.errors}>{errors.password}</span>}
+                    </div>
                     <button>Submit</button>
                 </form>
             </div>
