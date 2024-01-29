@@ -1,12 +1,10 @@
 import Form from "../components/Form/Form";
-import styles from "./Login.module.css";
 
 export default function Login(props) {
     return (
         <>
-            <div className={styles.box}>
+            <div>
                 <Form login={props.login}/>
-
             </div>
         </>
     );

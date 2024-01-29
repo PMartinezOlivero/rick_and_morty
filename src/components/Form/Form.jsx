@@ -15,14 +15,10 @@ export default function Form(props){
         password:''
     });
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     setUserData({
-    //         ...userData,
-    //         [e.target.name] : e.target.value
-
-    //     });
-    // };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        props.login(userData)
+    };
 
     const handleChange = (e) => {
         setErrors(
@@ -42,8 +38,11 @@ export default function Form(props){
     return (
         <>
             <div className={styles.box}>
-                <form className="" onSubmit={()=>props.login(userData)}>
-                    <div>
+                <h3>Proyecto:</h3>
+                <h2>RICK&MORTY</h2>
+                <hr />
+                <form className={styles.form} onSubmit={handleSubmit}>
+                    <div className={styles.input}>
                         <label htmlFor="email">Email</label>
                         <input 
                             type="text" 
@@ -54,7 +53,7 @@ export default function Form(props){
                         />
                         {errors.email && <span className={styles.errors}>{errors.email}</span>}
                     </div>
-                    <div>
+                    <div className={styles.input}>
                         <label htmlFor="password">Password</label>
                         <input 
                             type="text" 
@@ -65,7 +64,7 @@ export default function Form(props){
                         />
                         {errors.password && <span className={styles.errors}>{errors.password}</span>}
                     </div>
-                    <button>Submit</button>
+                    <button className={styles.button} onClick={handleSubmit}>LOGIN</button>
                 </form>
             </div>
         </>

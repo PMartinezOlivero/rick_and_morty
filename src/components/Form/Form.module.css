@@ -1,9 +1,44 @@
 .box {
-    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 50px auto;
+    padding: 20px;
+    width: 300px;
+    background-color: rgb(1, 110, 77);
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+}
+.box h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 32px;
+    padding:5px;
+}
+
+.input {
+    font-size: 20px;
+    padding: 5px;
+}
+.input label {
+    margin: 5px;
+}
+.input input {
+    width: 250px;
     padding: 10px;
-    width: 200px;
+    border: 1px solid gray;
+    border-radius: 5px;
+
+}
+
+.button {
+    padding: 10px;
+    background-color: orange;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
 }
 
 .errors {
-    color: red;
+    color: rgb(255, 89, 0);
 }
